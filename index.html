@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <title>PWA Sample</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<video id="video" width="640" height="480" autoplay style="display: none;"></video>
+<h1 id="detect" style="display: none;">顔検出中</h1>
+<h1 id="not-detect" style="display: none;">顔検出失敗</h1>
+<script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery.facedetection@2.0.3/dist/jquery.facedetection.min.js"></script>
+<script src="/javascript/main.js"></script>
+<script>
+  // Service Worker登録
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service_worker.js').then(function (registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function (err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  }
+</script>
+</body>
+</html>
