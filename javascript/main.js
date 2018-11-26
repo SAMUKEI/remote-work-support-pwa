@@ -24,10 +24,12 @@ class StatusObservable extends Observable {
         // 離席
         $('#detect').hide();
         $('#not-detect').show();
+        this.slack("離席中", ":samukei:")
       } else {
         // 在席
         $('#detect').show();
         $('#not-detect').hide();
+        this.slack("在席中", ":usagi:")
       }
     };
   }
@@ -36,7 +38,7 @@ class StatusObservable extends Observable {
   // text: 送信するテキスト
   // emoji: 絵文字
   slack(text, emoji) {
-    if(!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
       return console.log("please set api token");
     }
     const url = 'https://slack.com/api/users.profile.set';
@@ -47,10 +49,21 @@ class StatusObservable extends Observable {
         "status_emoji": emoji
       })
     };
+
+    const thiz = this;
     $.ajax({
       type: 'POST',
       url: url,
-      data: data
+      data: data,
+      success: function (data) {
+        if (!data["ok"]) {
+          // エラーなので1sec後に再送
+          window.setTimeout(thiz.slack(text, emoji), 1000);
+        }
+      },
+      error: function () {
+        console.log("エラー")
+      }
     });
   }
 
@@ -58,7 +71,7 @@ class StatusObservable extends Observable {
 
 $(function () {
   // 入力の変更によるトークン更新
-  $("#token").keyup(function() {
+  $("#token").keyup(function () {
     var token = $("#token").val();
     localStorage.setItem("token", token);
   });
