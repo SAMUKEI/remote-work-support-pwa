@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="manifest.json">
-  <title>PWA Sample</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>顔検出での在席・離席通知くん</title>
 </head>
 <body>
-<video id="video" width="640" height="480" autoplay style="display: none;"></video>
+<input type="text" id="token" name="token" size="100" placeholder="slack api token">
 <h1 id="detect" style="display: none;">顔検出中</h1>
 <h1 id="not-detect" style="display: none;">顔検出失敗</h1>
+<video id="video" width="1024" height="1024" autoplay style="display: none;"></video>
 <script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/jquery.facedetection@2.0.3/dist/jquery.facedetection.min.js"></script>
 <script src="/javascript/main.js"></script>

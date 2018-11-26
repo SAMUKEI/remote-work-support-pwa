@@ -5,7 +5,6 @@ const version = "v1::" //Change if you want to regenerate cache
 const staticCacheName = `${version}static-resources`;
 const urlsToCache = [
     '/',
-    '/css/style.css',
     '/javascript/main.js',
 ];
 const cdnsToCache = [
