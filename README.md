@@ -17,4 +17,10 @@ chrome://flags/#enable-experimental-web-platform-features
 
 ### ローカル実行
 
-[ウェブサーバーのインストールと確認](https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/?hl=ja#_7)の設定でローカル実行可能です。
+１． [ウェブサーバーのインストールと確認](https://developers.google.com/web/fundamentals/codelabs/debugging-service-workers/?hl=ja#_7)の設定でローカル実行可能です。
+
+２．[ユーザトークンを取得](https://api.slack.com/custom-integrations/legacy-tokens)
+
+３．localhostのAPIトークンにトークンを設定する。
+
+４．Slackのステータスが在席・離席で変わります。
